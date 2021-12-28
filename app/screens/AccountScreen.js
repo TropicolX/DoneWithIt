@@ -15,6 +15,7 @@ const menuItems = [
 			name: "format-list-bulleted",
 			backgroundColor: colors.primary,
 		},
+		targetScreen: null,
 	},
 	{
 		title: "My Messages",
@@ -52,9 +53,13 @@ function AccountScreen({ navigation }) {
 									backgroundColor={item.icon.backgroundColor}
 								/>
 							}
-							onPress={() =>
-								navigation.navigate(item.targetScreen)
-							}
+							onPress={() => {
+								if (item.targetScreen)
+									return navigation.navigate(
+										item.targetScreen
+									);
+								return;
+							}}
 						/>
 					)}
 				/>

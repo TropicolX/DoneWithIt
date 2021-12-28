@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Alert, Image, Pressable, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import logger from "../utility/logger";
 
 import colors from "../config/colors";
 
@@ -11,10 +12,14 @@ function ImageInput({ imageUri, onChangeImage }) {
 	}, []);
 
 	const requestPermission = async () => {
-		const { granted } =
-			await ImagePicker.requestMediaLibraryPermissionsAsync();
-		if (!granted)
-			alert("You need to enable permission to access the library");
+		try {
+			const { granted } =
+				await ImagePicker.requestMediaLibraryPermissionsAsync();
+			if (!granted)
+				alert("You need to enable permission to access the library");
+		} catch (error) {
+			logger.log(error);
+		}
 	};
 	const handlePress = () => {
 		if (!imageUri) selectImage();
@@ -42,7 +47,7 @@ function ImageInput({ imageUri, onChangeImage }) {
 				onChangeImage(result.uri);
 			}
 		} catch (error) {
-			console.log("Error reading an image", error);
+			logger.log("Error reading an image", error);
 		}
 	};
 

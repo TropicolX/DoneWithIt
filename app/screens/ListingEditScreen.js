@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 
@@ -91,9 +91,9 @@ function ListingEditScreen(props) {
 		let data = { ...listing };
 		if (location) data = { ...data, location };
 
-		const result = await listingsApi.addListing(data, (progress) =>
-			setProgress(progress)
-		);
+		const result = await listingsApi.addListing(data, (progress) => {
+			setProgress(progress);
+		});
 
 		if (!result.ok) {
 			setUploadVisible(false);
