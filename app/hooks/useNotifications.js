@@ -3,6 +3,7 @@ import * as Notifications from "expo-notifications";
 import { Platform } from "react-native";
 
 import expoPushTokensApi from "../api/expoPushTokens";
+import logger from "../utility/logger";
 
 Notifications.setNotificationHandler({
 	handleNotification: async () => ({
@@ -18,7 +19,9 @@ export default useNotifications = (notificationResponseListener) => {
 			const permission = await Notifications.getPermissionsAsync();
 			if (!permission.granted) return;
 
-			const token = await Notifications.getExpoPushTokenAsync();
+			const token = await Notifications.getExpoPushTokenAsync({
+				experienceId: "@tropicolx/DoneWithIt",
+			});
 			expoPushTokensApi.register(token.data);
 
 			if (Platform.OS === "android") {
@@ -30,7 +33,7 @@ export default useNotifications = (notificationResponseListener) => {
 				});
 			}
 		} catch (error) {
-			console.log("Error getting a push token", error);
+			logger.log(error);
 		}
 	};
 

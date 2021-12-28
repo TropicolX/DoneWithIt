@@ -5,7 +5,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AccountNavigator from "./AccountNavigator";
 import FeedNavigator from "./FeedNavigator";
 import ListingEditScreen from "../screens/ListingEditScreen";
-import navigation from "./rootNavigation";
 import NewListingButtton from "./NewListingButtton";
 import routes from "./routes";
 import useNotifications from "../hooks/useNotifications";

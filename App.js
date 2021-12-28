@@ -16,7 +16,6 @@ logger.start();
 // padding top is weird for screens
 // input field not resonding to touch properly
 // EditListingScreen pick image crashes app
-// My listings in Account crashes app
 // No internet connection component not showing
 
 export default function App() {
@@ -33,9 +32,7 @@ export default function App() {
 			<AppLoading
 				startAsync={restoreUser}
 				onFinish={() => setIsReady(true)}
-				onError={(error) =>
-					logger.log("AppLoading error occured:", error)
-				}
+				onError={(error) => logger.log(error)}
 			/>
 		);
 

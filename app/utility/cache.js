@@ -36,7 +36,6 @@ const get = async (key) => {
 			// Query - Gets or returns the state of a system
 			// Functions should only Command or Query and not do both
 			await AsyncStorage.removeItem(prefix + key);
-			console.log("isExpired is the cause!");
 			return null;
 		}
 

@@ -23,8 +23,8 @@
 			"package": "com.tropicolx.donewithit",
 			"versionCode": 1,
 			"adaptiveIcon": {
-				"foregroundImage": "./app/assets/adaptive-icon.png",
-				"backgroundColor": "#FFFFFF"
+				"foregroundImage": "./app/assets/icon.png",
+				"backgroundColor": "#e63c4b"
 			}
 		},
 		"web": {
