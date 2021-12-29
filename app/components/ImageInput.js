@@ -39,18 +39,18 @@ function ImageInput({ imageUri, onChangeImage }) {
 	};
 
 	const selectImage = async () => {
+		// Whenever I set quality to < 1, it crashes on my android
+		// device
 		try {
 			const result = await ImagePicker.launchImageLibraryAsync({
 				mediaTypes: ImagePicker.MediaTypeOptions.Images,
-				quality: 0.5,
+				quality: 1,
 			});
 
 			if (!result.cancelled) {
 				onChangeImage(result.uri);
 				return;
 			}
-
-			logger.log(Error("Update active"));
 		} catch (error) {
 			logger.log(error);
 		}
