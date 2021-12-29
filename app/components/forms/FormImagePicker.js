@@ -3,6 +3,7 @@ import { useFormikContext } from "formik";
 
 import ErrorMessage from "./ErrorMessage";
 import ImageInputList from "../ImageInputList";
+import logger from "../../utility/logger";
 
 function FormImagePicker({ name }) {
 	const { errors, setFieldValue, touched, values } = useFormikContext();

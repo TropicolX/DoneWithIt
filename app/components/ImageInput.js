@@ -35,6 +35,7 @@ function ImageInput({ imageUri, onChangeImage }) {
 					{ text: "No" },
 				]
 			);
+		return;
 	};
 
 	const selectImage = async () => {
@@ -43,11 +44,15 @@ function ImageInput({ imageUri, onChangeImage }) {
 				mediaTypes: ImagePicker.MediaTypeOptions.Images,
 				quality: 0.5,
 			});
+
 			if (!result.cancelled) {
 				onChangeImage(result.uri);
+				return;
 			}
+
+			logger.log(Error("Update active"));
 		} catch (error) {
-			logger.log("Error reading an image", error);
+			logger.log(error);
 		}
 	};
 
