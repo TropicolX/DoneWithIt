@@ -29,21 +29,24 @@ function RegisterScreen(props) {
 	const [error, setError] = useState();
 
 	const handleSubmit = async (userInfo) => {
-		const result = await registerApi.request(userInfo);
-		if (!result.ok) {
-			if (result.data) setError(result.data.error);
-			else {
-				setError("An unexpected error occured.");
-				logger.log(result);
+		try {
+			const result = await registerApi.request(userInfo);
+			if (!result.ok) {
+				if (result.data) setError(result.data.error);
+				else {
+					setError("An unexpected error occured.");
+				}
+				return;
 			}
-			return;
-		}
 
-		const { data: authToken } = await loginApi.request(
-			userInfo.email,
-			userInfo.password
-		);
-		auth.login(authToken);
+			const { data: authToken } = await loginApi.request(
+				userInfo.email,
+				userInfo.password
+			);
+			auth.login(authToken);
+		} catch (error) {
+			logger.log(error);
+		}
 	};
 
 	return (

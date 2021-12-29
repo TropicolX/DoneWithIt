@@ -5,10 +5,10 @@ const settings = {
 		apiUrl: "http://192.168.43.71:9000/api",
 	},
 	staging: {
-		apiUrl: "http://192.168.43.71:9000/api",
+		apiUrl: "https://fierce-springs-44768.herokuapp.com/api",
 	},
 	prod: {
-		apiUrl: "http://192.168.43.71:9000/api",
+		apiUrl: "https://fierce-springs-44768.herokuapp.com/api",
 	},
 };
 

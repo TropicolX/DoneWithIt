@@ -22,10 +22,14 @@ function LoginScreen(props) {
 	const [loginFailed, setLoginFailed] = useState(false);
 
 	const handleSubmit = async ({ email, password }) => {
-		const result = await authApi.login(email, password);
-		if (!result.ok) return setLoginFailed(true);
-		setLoginFailed(false);
-		auth.login(result.data);
+		try {
+			const result = await authApi.login(email, password);
+			if (!result.ok) return setLoginFailed(true);
+			setLoginFailed(false);
+			auth.login(result.data);
+		} catch (error) {
+			logger.log(error);
+		}
 	};
 
 	return (
