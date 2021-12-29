@@ -14,9 +14,12 @@ import OfflineNotice from "./app/components/OfflineNotice";
 logger.start();
 
 // padding top is weird for screens
+// Remove padding bottom for ListingScreen
 // input field not resonding to touch properly
-// EditListingScreen pick image crashes app
 // No internet connection component not showing
+// Increase listing tab button bottom margin
+// KeyboardView for ListingEditScreen
+// Remove keyboard on submitting a form
 
 export default function App() {
 	const [user, setUser] = useState();
